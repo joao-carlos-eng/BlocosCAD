@@ -25,14 +25,14 @@ source venv/bin/activate  # No Windows, use: venv\Scripts\activate
 
 pip install -r requirements.txt
 
-Execução
+## Execução
 Para executar a aplicação em ambiente de desenvolvimento, execute o seguinte comando:
 
 flask run
 
 A aplicação estará disponível no endereço: http://127.0.0.1:5000
 
-Implantação
+## Implantação
 Siga as instruções específicas do provedor de hospedagem escolhido para implantar a aplicação em um domínio público.
 
 Licença
