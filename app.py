@@ -15,6 +15,13 @@ def arquivo_permitido(filename, allowed_extensions):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in allowed_extensions
 
 
+def limpar_pasta_upload():
+    pasta = os.path.join(os.getcwd(), "uploads")
+    arquivos = os.listdir(pasta)
+    for arquivo in arquivos:
+        os.remove(os.path.join(pasta, arquivo))
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -39,6 +46,7 @@ def processar_arquivos():
 
             if output_filename:
                 flash("Blocos CAD criados com sucesso.")
+                limpar_pasta_upload()
                 return send_file(os.path.join("uploads", output_filename), as_attachment=True)
             else:
                 flash("Ocorreu um erro ao criar os Blocos CAD.")
@@ -69,6 +77,17 @@ def processar_blocos_cad(model_filename, points_filename):
     except Exception as e:
         print(f"Erro ao processar arquivos: {e}")
         return None
+
+
+@app.route("/try-again")
+def try_again():
+    # Limpa a pasta "uploads"
+    for filename in os.listdir("uploads"):
+        file_path = os.path.join("uploads", filename)
+        os.remove(file_path)
+
+    # Redireciona o usuário para a página inicial
+    return redirect(url_for("index"))
 
 
 if __name__ == "__main__":
