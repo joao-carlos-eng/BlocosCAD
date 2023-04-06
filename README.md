@@ -13,6 +13,7 @@ Esta aplicação Flask permite aos usuários carregar arquivos de modelo DXF e p
 1. Clone o repositório:
 
 git clone https://github.com/seu-usuario/aplicacao-blocos-cad-flask.git
+´´´bash
 cd aplicacao-blocos-cad-flask
 
 2. Crie um ambiente virtual e ative-o:
