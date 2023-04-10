@@ -4,3 +4,4 @@
 .idea/
 /pontos.txt
 /modelo.dxf
+__pycache__/app.cpython-311.pyc
