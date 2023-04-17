@@ -46,8 +46,7 @@ def processar_arquivos():
 
             if output_filename:
                 flash("Blocos CAD criados com sucesso.")
-                limpar_pasta_upload()
-                return send_file(os.path.join("uploads", output_filename), as_attachment=True)
+                return send_file(os.path.join(os.getcwd(), "uploads", output_filename), as_attachment=True)
             else:
                 flash("Ocorreu um erro ao criar os Blocos CAD.")
         else:
@@ -82,13 +81,11 @@ def processar_blocos_cad(model_filename, points_filename):
 @app.route("/try-again")
 def try_again():
     # Limpa a pasta "uploads"
-    for filename in os.listdir("uploads"):
-        file_path = os.path.join("uploads", filename)
-        os.remove(file_path)
+    limpar_pasta_upload()
 
     # Redireciona o usuário para a página inicial
     return redirect(url_for("index"))
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
